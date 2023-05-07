@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class Todos {
-    protected List<Operation> inputOperations;
+    private List<Operation> inputOperations;
     private List<String> tasks;
     private int maxQuantityTasks;
 
@@ -21,7 +21,6 @@ public class Todos {
         } else if (operation.getType().equals("REMOVE")) {
             inputOperations.add(operation);
             this.removeTask(operation.getTask());
-            System.out.println(operation.getTask());
         } else if (operation.getType().equals("RESTORE")) {
             this.restoreTask();
         }
@@ -53,6 +52,20 @@ public class Todos {
     }
 
     public void setMaxQuantityTasks(int maxQuantityTasks) {
-        this.maxQuantityTasks = maxQuantityTasks;
+        if (maxQuantityTasks > 0) {
+            this.maxQuantityTasks = maxQuantityTasks;
+        }
+    }
+
+    public int getMaxQuantityTasks() {
+        return maxQuantityTasks;
+    }
+
+    public List<Operation> getInputOperations() {
+        return inputOperations;
+    }
+
+    public List<String> getTasks() {
+        return tasks;
     }
 }
