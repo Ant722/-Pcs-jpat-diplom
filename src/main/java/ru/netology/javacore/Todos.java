@@ -14,15 +14,18 @@ public class Todos {
     }
 
     public void addInputOperations(Operation operation) {
-
-        if (operation.getType().equals("ADD")) {
-            inputOperations.add(operation);
-            this.addTask(operation.getTask());
-        } else if (operation.getType().equals("REMOVE")) {
-            inputOperations.add(operation);
-            this.removeTask(operation.getTask());
-        } else if (operation.getType().equals("RESTORE")) {
-            this.restoreTask();
+        switch (operation.getType()) {
+            case "ADD":
+                inputOperations.add(operation);
+                this.addTask(operation.getTask());
+                break;
+            case "REMOVE":
+                inputOperations.add(operation);
+                this.removeTask(operation.getTask());
+                break;
+            case "RESTORE":
+                this.restoreTask();
+                break;
         }
     }
 
@@ -39,7 +42,7 @@ public class Todos {
     public String getAllTasks() {
         String text = "";
         tasks.sort(Comparator.naturalOrder());
-        for(String task : tasks){
+        for (String task : tasks) {
             text += new StringBuilder().append(task + " ");
         }
         return text;
@@ -47,10 +50,13 @@ public class Todos {
 
     public void restoreTask() {
         Operation restoreOperation = inputOperations.get(inputOperations.size() - 1);
-        if (restoreOperation.getType().equals("ADD")) {
-            removeTask(restoreOperation.getTask());
-        } else if (restoreOperation.getType().equals("REMOVE")) {
-            addTask(restoreOperation.getTask());
+        switch (restoreOperation.getType()) {
+            case "ADD":
+                removeTask(restoreOperation.getTask());
+                break;
+            case "REMOVE":
+                addTask(restoreOperation.getTask());
+                break;
         }
         inputOperations.remove(inputOperations.size() - 1);
     }
