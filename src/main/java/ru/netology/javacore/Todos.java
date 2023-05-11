@@ -37,8 +37,12 @@ public class Todos {
     }
 
     public String getAllTasks() {
+        String text = "";
         tasks.sort(Comparator.naturalOrder());
-        return tasks.toString();
+        for(String task : tasks){
+            text += new StringBuilder().append(task + " ");
+        }
+        return text;
     }
 
     public void restoreTask() {

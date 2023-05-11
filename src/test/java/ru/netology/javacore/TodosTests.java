@@ -78,7 +78,7 @@ class TodosTests {
         todosTest.addTask("В гости к Пяточку");
         todosTest.addTask("Чтение книг");
         String actual = todosTest.getAllTasks();
-        String expected = "[В гости к Пяточку, Одолжить мёд, Пробежка, Чтение книг]";
+        String expected = "В гости к Пяточку Одолжить мёд Пробежка Чтение книг ";
         Assertions.assertEquals(expected,actual);
     }
 
