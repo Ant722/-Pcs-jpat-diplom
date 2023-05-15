@@ -40,10 +40,11 @@ public class Todos {
     }
 
     public String getAllTasks() {
-        String text = "";
+        StringBuilder stringBuilder = new StringBuilder();
         for (String task : tasks) {
-            text += new StringBuilder().append(task).append(" ");
+            stringBuilder.append(task).append(" ");
         }
+        String text = stringBuilder.toString();
         return text;
     }
 
