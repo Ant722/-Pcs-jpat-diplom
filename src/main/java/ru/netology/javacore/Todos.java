@@ -5,11 +5,11 @@ import java.util.*;
 
 public class Todos {
     private List<Operation> inputOperations;
-    private List<String> tasks;
+    private TreeSet<String> tasks;
     private int maxQuantityTasks;
 
     public Todos() {
-        this.tasks = new ArrayList<>();
+        this.tasks = new TreeSet<>();
         this.inputOperations = new ArrayList<>();
     }
 
@@ -41,9 +41,8 @@ public class Todos {
 
     public String getAllTasks() {
         String text = "";
-        tasks.sort(Comparator.naturalOrder());
         for (String task : tasks) {
-            text += new StringBuilder().append(task + " ");
+            text += new StringBuilder().append(task).append(" ");
         }
         return text;
     }
@@ -75,7 +74,7 @@ public class Todos {
         return inputOperations;
     }
 
-    public List<String> getTasks() {
+    public TreeSet<String> getTasks() {
         return tasks;
     }
 }
